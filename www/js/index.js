@@ -1,18 +1,15 @@
-var toastTime = 2000;
 var notification_count=0;
-
+var ld
 
 document.addEventListener('deviceready', function () {
-    console.log(cordova.plugins.notification);
-    console.log(cordova.plugins.notification.local);
-    console.log(cordova.plugins.notification.local.launchDetails);
-    console.log(pageinit);
+    ld = cordova.plugins.notification.local.launchDetails;
 },false);
 
 $(document).on('pageinit', function() {
 
 	$('#messageButton').on('click', function() {
-		createMessage();
+		createMessage("An example message",1000);
+        console.log(ld);
 
 	});
 	
@@ -30,10 +27,10 @@ $(document).on('pageinit', function() {
 
 
 
-function createMessage(){		
+function createMessage(text,time){		
 	//phoneGap and jQueryMobile do not support toast messages directly
     //so we can add this using toast.js
-    new Toast({content: 'An example message.', duration: toastTime}); 	
+    new Toast({content: text, duration: time}); 	
 }
         	
 
@@ -64,9 +61,7 @@ function dialogDismissed(buttonIndex) {
     }
 
 }
-
-   
-   
+ 
 function createNotification(titleText,notificationText,delay) {
         		
 	//
