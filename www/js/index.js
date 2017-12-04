@@ -1,3 +1,4 @@
+var toastTime = 2000;
 var notification_count=0;
 
 $(document).on('pageinit', function() {
@@ -23,7 +24,7 @@ $(document).on('pageinit', function() {
 function createMessage(){		
 	//phoneGap and jQueryMobile do not support toast messages directly
     //so we can add this using toast.js
-    new Toast({content: 'An example message.', duration: 1000}); 	
+    new Toast({content: 'An example message.', duration: toastTime}); 	
 }
         	
 
