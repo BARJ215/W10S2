@@ -1,7 +1,9 @@
 var notification_count=0;
 
+
+
 $(document).on('pageinit', function() {
-    cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
+    
     
 	$('#messageButton').on('click', function() {
 		createMessage("An example message",1000);
@@ -14,7 +16,7 @@ $(document).on('pageinit', function() {
 
 
 	$('#notificationButton').on('click', function() {
-		new createNotification("Example Notification","Hello",1000);
+		new createNotification("Example Notification","Hello",1000,3);
 	});
 
 
@@ -47,15 +49,17 @@ function dialogDismissed(buttonIndex) {
 	
 	if(buttonIndex==1){
         new Toast({content: "GO EAT SOME FOOD", duration: 3000});
-        new createNotification("Hey You!","GET BACK TO WORK",30000);
+        new createNotification("Hey You!","GET BACK TO WORK",30000,1);
     }
    	else if(buttonIndex==2){
-        new createNotification("Click Me","Click me please.",60000);      
+        new createNotification("Click Me","Click me please.",60000,2);
+
+        
     }
 
 }
  
-function createNotification(titleText,notificationText,delay) {
+function createNotification(titleText,notificationText,delay,idd) {
         		
 	//
     //generate a time to post notification
@@ -68,12 +72,20 @@ function createNotification(titleText,notificationText,delay) {
     //
     
     cordova.plugins.notification.local.schedule({ 
-    	id: 		1,
+    	id: 		idd,
         title: 		titleText,
         message: 	notificationText,
         date: 		notificationTime, 
         badge: 		notification_count++
    	});
+    
+    cordova.plugins.notification.local.on('click', function (notification) {
+       
+        alert(notification.id);
+        new Toast({content: 'GOOD', duration: 3000})
+        
+    });
+
     
 }
 
