@@ -1,14 +1,19 @@
-document.addEventListener('deviceready', function () {
-    console.log(cordova.plugins.notification.local.launchDetails);
-},false);
-
 var toastTime = 2000;
 var notification_count=0;
+
+
+document.addEventListener('deviceready', function () {
+    console.log(cordova.plugins.notification);
+    console.log(cordova.plugins.notification.local);
+    console.log(cordova.plugins.notification.local.launchDetails);
+    console.log(pageinit);
+},false);
 
 $(document).on('pageinit', function() {
 
 	$('#messageButton').on('click', function() {
 		createMessage();
+
 	});
 	
 	$('#dialogButton').on('click', function() {
