@@ -6,7 +6,7 @@ $(document).on('pageinit', function() {
     
     
 	$('#messageButton').on('click', function() {
-		createMessage("An example message",1000);
+		new createMessage("An example message",1000);
 
 	});
 	
