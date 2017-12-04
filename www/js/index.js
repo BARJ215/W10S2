@@ -1,5 +1,8 @@
+var titleText;
+var notiText;
 var toastTime = 2000;
 var notification_count=0;
+var delay;
 
 $(document).on('pageinit', function() {
 
@@ -13,7 +16,7 @@ $(document).on('pageinit', function() {
 
 
 	$('#notificationButton').on('click', function() {
-		createNotification();
+		new createNotification("Example Notification","Hello",1000);
 	});
 
 
@@ -46,20 +49,26 @@ function createDialog() {
         	
 function dialogDismissed(buttonIndex) {
 	
-	if(buttonIndex==1) new Toast({content: "OH NO", duration: 3000});
-   	else if(buttonIndex==2) new Toast({content: 'GOOD', duration: 3000});
+	if(buttonIndex==1){
+        new Toast({content: "GO EAT SOME FOOD", duration: 3000});
+        new createNotification("Hey You!","GET BACK TO WORK",30000);
+    }
+   	else if(buttonIndex==2){
+        new Toast({content: 'GOOD', duration: 3000});
+        
+    }
 
 }
 
    
    
-function createNotification() {
+function createNotification(titleText,notificationText,delay) {
         		
 	//
     //generate a time to post notification
     //
     var currentTime = new Date().getTime(); //current time
-    var notificationTime = new Date(currentTime + 1000); //delayed time  - add 1 second
+    var notificationTime = new Date(currentTime + delay); //delayed time  - add 1 second
     			
     //
     //setup notification
@@ -67,10 +76,11 @@ function createNotification() {
     
     cordova.plugins.notification.local.schedule({ 
     	id: 		1,
-        title: 		"Hey you",
-        message: 	"This is an example notification",
+        title: 		titleText,
+        message: 	notificationText,
         date: 		notificationTime, 
         badge: 		notification_count++
    	});
     
 }
+
