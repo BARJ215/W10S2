@@ -6,7 +6,7 @@ $(document).on('pageinit', function() {
     
     
 	$('#messageButton').on('click', function() {
-		new createMessage("An example message",1000);
+		createMessage();
 
 	});
 	
@@ -24,10 +24,10 @@ $(document).on('pageinit', function() {
 
 //cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
 
-function createMessage(text,time){		
+function createMessage(){		
 	//phoneGap and jQueryMobile do not support toast messages directly
     //so we can add this using toast.js
-    new Toast({content: text, duration: time}); 	
+    new Toast({content: "An example Message", duration: 1000}); 	
 }
         	
 
@@ -52,9 +52,7 @@ function dialogDismissed(buttonIndex) {
         new createNotification("Hey You!","GET BACK TO WORK",30000,1);
     }
    	else if(buttonIndex==2){
-        new createNotification("Click Me","Click me please.",60000,2);
-
-        
+        new createNotification("Click Me","Click me please.",60000,2);   
     }
 
 }
