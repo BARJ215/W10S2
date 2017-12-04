@@ -79,13 +79,21 @@ function createNotification(titleText,notificationText,delay,idd) {
         badge: 		notification_count++
    	});
     
-    cordova.plugins.notification.local.on('click', function (notification) {
-       
-        alert(notification.id);
-        new Toast({content: 'GOOD', duration: 3000})
-        
-    });
+    cordova.plugins.notification.local.on('click', clickedNotif(notification.id));
 
     
 }
+
+clickedNotif(id){
+    switch(id){
+        case 2:
+            new Toast({content: 'GOOD', duration: 3000});
+            break;
+        default:
+           
+   }
+}
+    
+    
+
 
