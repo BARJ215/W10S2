@@ -58,13 +58,9 @@ function dialogDismissed(buttonIndex) {
 }
  
 function clickedNotif(ide){
-    switch(ide){
-        case 2:
-            new Toast({content: 'GOOD', duration: 3000});
-            break;
-        default:
-           
-   }
+    if(ide==2){
+        new Toast({content: 'GOOD', duration: 3000});
+    }
 }
 
 function createNotification(titleText,notificationText,delay,idd) {
