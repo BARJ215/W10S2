@@ -1,8 +1,6 @@
-var titleText;
-var notiText;
+
 var toastTime = 2000;
 var notification_count=0;
-var delay;
 
 $(document).on('pageinit', function() {
 
@@ -11,7 +9,7 @@ $(document).on('pageinit', function() {
 	});
 	
 	$('#dialogButton').on('click', function() {
-		createDialog();
+		new createDialog("Example","Are you hungry?","Yes","No",dialogDismissed);
 	});
 
 
@@ -31,21 +29,19 @@ function createMessage(){
 }
         	
 
-function createDialog() {
+function createDialog(titleD,messageD,b1,b2,action) {
 
 	//phonegap supports native dialog boxes.
 	//here's a simple example
       
 	navigator.notification.confirm(
-    	'Are you hungry?',  // message
-        dialogDismissed,         // callback
-        'An example dialog!',            // title
-        ['Yes', 'No']                  // buttons
+    	messageD,  // message
+        action,         // callback
+        titleD,            // title
+        [b1,b2]                  // buttons
     );
 
 }
-        	
-        	
         	
 function dialogDismissed(buttonIndex) {
 	
@@ -55,6 +51,7 @@ function dialogDismissed(buttonIndex) {
     }
    	else if(buttonIndex==2){
         new Toast({content: 'GOOD', duration: 3000});
+        new createNotification("Click Me","Click me please.",60000);
         
     }
 
