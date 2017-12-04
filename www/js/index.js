@@ -1,3 +1,6 @@
+document.addEventListener('deviceready', function () {
+    console.log(cordova.plugins.notification.local.launchDetails);
+}, false);
 
 var toastTime = 2000;
 var notification_count=0;
