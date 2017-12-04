@@ -1,10 +1,9 @@
 var notification_count=0;
 
 $(document).on('pageinit', function() {
-
+    
 	$('#messageButton').on('click', function() {
 		createMessage("An example message",1000);
-        console.log(cordova.plugins.notification.local.launchDetails);
 
 	});
 	
@@ -20,7 +19,7 @@ $(document).on('pageinit', function() {
 
 });
 
-
+//cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
 
 function createMessage(text,time){		
 	//phoneGap and jQueryMobile do not support toast messages directly
@@ -49,10 +48,9 @@ function dialogDismissed(buttonIndex) {
         new Toast({content: "GO EAT SOME FOOD", duration: 3000});
         new createNotification("Hey You!","GET BACK TO WORK",30000);
     }
-   	else if(buttonIndex==2){
-        new Toast({content: 'GOOD', duration: 3000});
-        new createNotification("Click Me","Click me please.",60000);
-        
+   	else if(buttonIndex==2){   
+        new createNotification("Click Me","Click me please.",60000);      
+        cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
     }
 
 }
