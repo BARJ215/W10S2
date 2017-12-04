@@ -1,6 +1,7 @@
 var notification_count=0;
 
 $(document).on('pageinit', function() {
+    cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
     
 	$('#messageButton').on('click', function() {
 		createMessage("An example message",1000);
@@ -48,9 +49,8 @@ function dialogDismissed(buttonIndex) {
         new Toast({content: "GO EAT SOME FOOD", duration: 3000});
         new createNotification("Hey You!","GET BACK TO WORK",30000);
     }
-   	else if(buttonIndex==2){   
+   	else if(buttonIndex==2){
         new createNotification("Click Me","Click me please.",60000);      
-        cordova.plugins.notification.local.on('click',new Toast({content: 'GOOD', duration: 3000}));
     }
 
 }
