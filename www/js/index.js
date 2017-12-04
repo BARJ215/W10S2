@@ -1,15 +1,10 @@
 var notification_count=0;
-var ld
-
-document.addEventListener('deviceready', function () {
-    ld = cordova.plugins.notification.local.launchDetails;
-},false);
 
 $(document).on('pageinit', function() {
 
 	$('#messageButton').on('click', function() {
 		createMessage("An example message",1000);
-        console.log(ld);
+        console.log(cordova.plugins.notification.local.launchDetails);
 
 	});
 	
